@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 同个背景多个图片 */
+        .div1{
+            width: 800px;
+            height: 400px;
+            border: 1px solid blue;
+            background: url(img/bg_small.jpg) left no-repeat,
+            url(img/jingse.jpg) right no-repeat;
+            background-size: 400px 400px;
+        }
+        /* 取图标 */
+        .icon{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            display: block;
+            background-image: url(img/icon.jpg);
+            background-position: -150px -150px;
+        }
+        img{
+            width: 266px;
+            height: auto;
+            float: left;
+        }
+        .blur{
+            /* 设置滤镜 :模糊*/
+            filter: blur(4px);
+        }
+        .invert{
+            /* 反转图片颜色，类似与照片的底片效果 */
+            filter: invert(100%);
+        }
+        .saturate{
+            /* 增加图片的饱和度（默认饱和度100%），使颜色更加鲜艳 */
+            filter: saturate(1000%);
+        }
+        .div_color{
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            position: relative;
+            top: 200px;
+        }
+        #line{
+            /*                  线性渐变     默认是从上到下*/
+            background-image: linear-gradient(green,gold);
+            /* 到右下角的对角线线性渐变 */
+            background-image: linear-gradient(to bottom right,red,yellow);
+        }
+        #radial{
+            /* 径向渐变：默认是颜色节点均匀分布 */
+            background-image: radial-gradient(red,yellow,green);
+        }
+        /* 创建动画 */
+        @keyframes example {
+            /* 从。。。到。。。 */
+            from{background-color: red;}
+            to{background-color: yellow;}
+        }
+        .animation{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 指定选择器的动画持续5s */
+            animation: example 5s;
+            margin-top: 200px ;
+        }
+        /* 伪元素：可以创建虚拟的元素 */
+        /* 在元素之前插入新内容和样式 */
+        p::before{
+            content: '【';
+            color: red;
+        }
+        /* 在元素之后插入新内容和样式 */
+        p::after{
+            content: '】';
+            color: blue;
+        }
+        /* 子选择器 */
+        /* body里的第一个div */
+        body div:nth-child(1){
+            border: 5px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <i class="icon"></i>
+    </div>
+    <img class="blur" src="img/jingse.jpg">
+    <img class="invert" src="img/jingse.jpg">
+    <img class="saturate" src="img/jingse.jpg">
+    <div class="div_color" id="line"></div>
+    <div class="div_color" id="radial"></div>
+    <div class="animation"></div>
+    <p>hello</p>
+</body>
+</html>
